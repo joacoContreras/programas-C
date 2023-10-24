@@ -58,14 +58,9 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "ejercicio1.C": "cpp",
+    "ejercicio1 copy.C": "cpp",
     "ejercicio2.C": "cpp",
-    "ejercicio.3.C": "cpp",
-    "ejercicio4.C": "cpp",
-    "listas_5.C": "cpp",
-    "ejercicio5.C": "cpp",
-    "ejercicio6.C": "cpp",
-    "ejercicio7.C": "cpp",
-    "g3_consumo_energetico_v1.C": "cpp",
+    "ejercicio3.C": "cpp",
     "g3_consumo_energetico_v2.C": "cpp"
   }
 }

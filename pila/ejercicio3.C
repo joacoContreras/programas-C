@@ -32,12 +32,11 @@ void push(struct Stack *stack, int value)
     stack->top = newNode;
 }
 
-int popLast(struct Stack *stack)
+void popLast(struct Stack *stack)
 {
     if (isEmpty(stack))
     {
         printf("La pila está vacía, no se puede eliminar el fondo.\n");
-        return;
 
     } else if (stack -> top->next == NULL)
         {
@@ -57,7 +56,29 @@ int popLast(struct Stack *stack)
                 printf("\nUltimo elemento eliminado\n");
                 
             }
-    
+}
+
+void ultimoElemento(struct Stack* stack)
+{
+    struct Node* current = stack -> top;
+
+    if (isEmpty(stack))
+    {
+        printf("\nLa pila esta vacia");
+    }
+    else if (stack -> top -> next == NULL)
+    {
+        printf("\nUltimo nodo: %d", stack -> top -> data);
+    }
+    else
+    {
+        while (current -> next != NULL)
+        {
+            current = current -> next;
+        }
+
+        printf("\nUltimo nodo: %d", current -> data);
+    }
 }
 
 void liberarMemoria(struct Stack *stack)
@@ -90,10 +111,10 @@ void imprimir(struct Stack *stack)
     printf("\n");
 }
 
-void sumatoria(struct Stack *stack)
+int numElementos(struct Stack *stack)
 {
     struct Node *current = stack -> top;
-    int sumatoria = 0;
+    int numElementos = 0;
 
     if (current == NULL)
     {
@@ -102,11 +123,11 @@ void sumatoria(struct Stack *stack)
     
     while (current != NULL)
     {
-        sumatoria += current -> data;
+        numElementos++;
         current = current ->next;
     }
 
-    printf("\nEl total es: %d",sumatoria);
+    return numElementos;
 }
 
 
@@ -123,7 +144,8 @@ int main()
         printf("\n1. Agregar 5 nodos a la pila (valor aleatorio entre 1 y 100)");
         printf("\n2. Borrar el ultimo nodo de la pila");
         printf("\n3. Imprimir pila");
-        printf("\n4. Suma de los valores de la pila");
+        printf("\n4. Cantidad de elementos en la pila");
+        printf("\n5. Imprimir ultimo elemento de la pila");
         printf("\n0. Salir");
         printf("\nOpcion: ");
         
@@ -151,6 +173,7 @@ int main()
         case 2:
         {
             popLast(&stack);
+            break;
         }
 
         case 3:
@@ -161,7 +184,19 @@ int main()
 
         case 4:
         {
-            sumatoria(&stack);
+            int num = numElementos(&stack);
+
+            if (num != 0)
+            {
+                printf("\nHay %d elementos en la pila",num);
+            }
+        break;
+        }
+
+        case 5:
+        {
+            ultimoElemento(&stack);
+            break;
         }
         
         default:
